@@ -6,6 +6,14 @@ function not(predicate) {
   };
 }
 
+function printIf(shouldPrintIt) {
+  return function (msg) {
+    if (shouldPrintIt(msg)) {
+      output(msg);
+    }
+  };
+}
+
 function when(fn) {
   return function (predicate) {
     return function (...args) {
@@ -20,7 +28,10 @@ function when(fn) {
 
 // only necessary in some browsers
 var output = console.log;
+
+// point-free version
 var printIf = when(output);
+//
 var isLongEnough = not(isShortEnough);
 
 function isShortEnough(str) {
@@ -29,6 +40,13 @@ function isShortEnough(str) {
 
 var msg1 = "Hello";
 var msg2 = msg1 + " World";
+
+// when(output) is returning a function that has the same shape as printIf function
+
+printIf(isShortEnough)(msg1);
+
+// printIf  (isShortEnough)(msg1);
+when(output)(isShortEnough)(msg1);
 
 printIf(isShortEnough)(msg1); // Hello
 printIf(isShortEnough)(msg2);
