@@ -19,7 +19,7 @@ function when(fn) {
 // *********************
 
 // only necessary in some browsers
-var output = console.log.bind(console);
+var output = console.log;
 var printIf = when(output);
 var isLongEnough = not(isShortEnough);
 
