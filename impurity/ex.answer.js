@@ -32,8 +32,12 @@ function sortStudentsByID() {
   return students;
 }
 
-function getStudentsByID() {
-  return students;
+function getStudentsByID(curStudents) {
+  var origStudents = students.slice();
+  students = curStudents;
+  var newStudents = sortStudentsByID();
+  students = origStudents;
+  return newStudents;
 }
 
 // *************************************
