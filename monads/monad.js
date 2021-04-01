@@ -1,3 +1,11 @@
+function curry(fn) {
+  return (arg) => {
+    return (arg2) => {
+      return fn(arg, arg2);
+    };
+  };
+}
+
 function Just(val) {
   return [map, chain, ap];
 
@@ -14,8 +22,24 @@ function Just(val) {
   }
 }
 
-console.log(Just(42));
+var fortyOne = Just(41);
+var fortyTwo = fortyOne.map(function inc(v) {
+  return v + 1;
+});
 
-var x = Just(42);
+function identity(v) {
+  return v;
+}
 
-console.log(x);
+console.log(fortyOne, fortyTwo);
+
+var user1 = Just("Justin");
+var user2 = Just("Remy");
+
+var tuple = curry(function tuple(x, y) {
+  return [x, y];
+});
+
+var users = user1.map(tuple);
+
+console.log(users);
