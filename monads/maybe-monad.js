@@ -42,7 +42,7 @@ var prop = curry(function prop(prop, obj) {
 
 console.log(prop);
 
-Maybe.of(someObj)
-  .chain(prop("something"))
-  .chain(prop("else"))
-  .chain(prop("entirely"));
+// Maybe.of(someObj)
+//   .chain(prop("something"))
+//   .chain(prop("else"))
+//   .chain(prop("entirely"));
